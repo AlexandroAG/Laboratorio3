@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Laboratorio_3</title>
+
+</head>
+<body>
+ 
+    <h1><p style="text-align: center;">Laboratorio#3</p></h1> 
+    
+    <p><br> I. Resolver los siguientes problemas. Las cadenas o entradas</br>
+        <br> 1. Escribir una función que, dada una cadena "t", retorne si un número es un palíndromo de doble base o no. (Palíndromo en base 10 y base 2).</br>
+        <br> 2. Escribir una función que, dada una cadena "t", retorne la cantidad de caracteres de la cadena.</br>
+        <br> 3. Escribir una función que, dado un año "a", retorne si ese año es bisiesto o no. </br>
+        <br> 4. Escribir una función que, dado un número "n" ( 0 < n < 1000000), retorne la sumatoria de todos los número primos debajo de ese número.</br>
+    
+    </p>
+    
+
+    <Script> 
+
+        /* I Parte*/
+
+        function esPalindromo(s) 
+        {
+           return s === s.split('').reverse().join('');
+        }
+       
+            function esPalindromoDobleBase(t) 
+            {
+            
+            const numero = parseInt(t, 10);
+       
+            
+            if (!esPalindromo(t)) {
+               return false;
+            }
+       
+            
+            const binario = numero.toString(2);
+       
+           
+            return esPalindromo(binario);
+         }
+       
+         console.log(esPalindromoDobleBase("100")); 
+         console.log(esPalindromoDobleBase("3")); 
+         console.log(esPalindromoDobleBase("585")); 
+
+   
+    </Script>
+       
+       
+       
+       
+    <script>
+           
+        /* II Parte*/
+
+        function contarFrecuencias(t) 
+        {
+    
+           const frecuencias = {};
+    
+           for (const caracter of t) 
+           {
+              if (frecuencias[caracter]) 
+                {
+                
+                 frecuencias[caracter]++;
+
+                } else {
+            
+                 frecuencias[caracter] = 1;
+
+                }
+   
+            }
+
+          return frecuencias;
+        }
+
+       const resultado = contarFrecuencias("ALEXANDRO");
+       console.log(resultado); 
+       </script>
+       
+
+
+        <script>
+
+            /* III Parte*/
+       
+         function esBisiesto(a) 
+        {
+             if (a % 400 === 0) 
+            {
+              return true;
+            }
+                if (a % 100 === 0)
+                {
+                 return false;
+                }
+                    if (a % 4 === 0) 
+                    {
+                     return true;
+                    }
+              return false;
+        }
+
+        function imprimirResultado(a)
+       {
+        if (esBisiesto(a)) {
+         console.log('EsBisiesto');
+         } else {
+         console.log('NoBisiesto');
+        }
+      }
+
+     imprimirResultado(2023); 
+     imprimirResultado(1992); 
+     imprimirResultado(2000); 
+
+        </script>
+       
+ 
+    <script>
+
+        /* IV Parte*/
+
+
+        function esPrimo(num) {
+    if (num <= 1) return false; 
+    if (num <= 3) return true;  
+    if (num % 2 === 0 || num % 3 === 0) return false;
+    for (let i = 5; i * i <= num; i += 6) {
+        if (num % i === 0 || num % (i + 2) === 0) return false;
+    }
+    return true;
+}
+
+
+function sumaDePrimosHasta(n) {
+    let suma = 0;
+
+    for (let i = 2; i <= n; i++) { 
+        if (esPrimo(i)) {
+            suma += i;
+        }
+    }
+
+    return suma;
+}
+
+// Ejemplos de uso
+console.log(sumaDePrimosHasta(5));  
+console.log(sumaDePrimosHasta(7)); 
+console.log(sumaDePrimosHasta(17)); 
+
+ </script>
+   
+          
+</body>
+</html>
